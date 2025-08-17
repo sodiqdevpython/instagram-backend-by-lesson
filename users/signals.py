@@ -40,4 +40,4 @@ def create_user_confirm(sender, instance, created, **kwargs):
             )
         else:
             print(f"Xurmatli foydalanuvchi +998{instance.phone_number} parolingiz: ", code)
-            send_verify_code_sms_thread(code, instance.phone_number)
+            send_verify_code_sms_thread(code, instance.phone_number, localtime(new_user_confirm.expiration_time))

@@ -13,8 +13,7 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(UserConfirm)
 class UserConfirmAdmin(admin.ModelAdmin):
-    list_display = ("id", "code", "user", "expiration_time", "is_confirmed")
-    list_filter = ("is_confirmed",)
+    list_display = ("id", "code", "user", "expiration_time")
     search_fields = ("user", "code")
     date_hierarchy = "created_at"
     ordering = ("-created_at",)

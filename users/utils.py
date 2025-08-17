@@ -30,14 +30,14 @@ def SmsMessage(to, from_, text):
     print("Response:", response.json())
     return response.json()
 
-def send_verify_code_sms(code, phone_number):
+def send_verify_code_sms(code, phone_number, expiration):
     return SmsMessage(
         to=f"998{phone_number}",
         from_=config("VONAGE_PHONE_NUMBER"),
-        text=f"Sizning tasdiqlash parolingiz: {code}"
+        text=f"\n\n\nSizning tasdiqlash parolingiz: {code}\n bu kod \n{expiration}\n dan keyin eskiradi\n\n\n"
     )
 
 
-def send_verify_code_sms_thread(code, phone_number):
-    thread = Thread(target=send_verify_code_sms, args=(code, phone_number))
+def send_verify_code_sms_thread(code, phone_number, expiration):
+    thread = Thread(target=send_verify_code_sms, args=(code, phone_number, expiration))
     thread.start()
